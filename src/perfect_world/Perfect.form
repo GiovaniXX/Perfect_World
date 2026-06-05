@@ -36,7 +36,7 @@
                       <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="selectIremName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="selectItemName" alignment="0" max="32767" attributes="0"/>
                           <Component id="descriptionName" alignment="0" pref="438" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -84,7 +84,7 @@
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="selectIremName" min="-2" max="-2" attributes="0"/>
+              <Component id="selectItemName" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Component id="icon" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
@@ -132,11 +132,8 @@
         <Property name="text" type="java.lang.String" value="Select Item Name"/>
       </Properties>
     </Component>
-    <Component class="components.ComboBox" name="selectIremName">
+    <Component class="components.ComboBox" name="selectItemName">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="30" green="2d" red="2d" type="rgb"/>
-        </Property>
         <Property name="labelText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -146,7 +143,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="30" green="2d" red="2d" type="rgb"/>
         </Property>
-        <Property name="labelText" type="java.lang.String" value="Description Name"/>
+        <Property name="labelText" type="java.lang.String" value="Description Item Name"/>
       </Properties>
     </Component>
   </SubComponents>

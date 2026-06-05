@@ -50,7 +50,8 @@ public class ComboBox<E> extends JComboBox<E> {
     }
 
     private String labelText = "Label";
-    private Color lineColor = new Color(3, 155, 216);
+    //private Color lineColor = new Color(3, 155, 216);
+    private Color lineColor = new Color(45, 45, 48);
     private boolean mouseOver;
 
     public ComboBox() {

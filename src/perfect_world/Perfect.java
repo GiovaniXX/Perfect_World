@@ -18,18 +18,28 @@ public class Perfect extends javax.swing.JFrame {
     private void carregarItensNoComboBox() throws ClassNotFoundException, SQLException {
         ItemDAO dao = new ItemDAO();
         for (String itemName : dao.getItemNames()) {
-            selectIremName.addItem(itemName);
+            selectItemName.addItem(itemName);
         }
     }
 
     private void configurarEventoComboBox() {
-        selectIremName.addActionListener(e -> {
+        selectItemName.addActionListener(e -> {
             try {
-                String selectedName = (String) selectIremName.getSelectedItem();
+                String selectedName = (String) selectItemName.getSelectedItem();
                 Item item = new ItemDAO().getItemByName(selectedName);
 
+                // Atualiza o campo de texto com o nome
                 descriptionName.setText(item.getName());
-                icon.setIcon(new javax.swing.ImageIcon(item.getIcon())); // carrega o caminho do ícone
+
+                // Verifica se o arquivo existe antes de carregar
+                String path = item.getIcon();
+                java.io.File file = new java.io.File(path);
+                if (file.exists()) {
+                    icon.setIcon(new javax.swing.ImageIcon(path));
+                } else {
+                    icon.setIcon(null); // limpa o ícone
+                    System.out.println("Arquivo não encontrado: " + path);
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -46,7 +56,7 @@ public class Perfect extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         cyberButton = new components.CyberButton();
         jLabel2 = new javax.swing.JLabel();
-        selectIremName = new components.ComboBox();
+        selectItemName = new components.ComboBox();
         descriptionName = new components.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,12 +72,11 @@ public class Perfect extends javax.swing.JFrame {
 
         jLabel2.setText("Select Item Name");
 
-        selectIremName.setBackground(new java.awt.Color(45, 45, 48));
-        selectIremName.setLabelText("");
+        selectItemName.setLabelText("");
 
         descriptionName.setEditable(false);
         descriptionName.setBackground(new java.awt.Color(45, 45, 48));
-        descriptionName.setLabelText("Description Name");
+        descriptionName.setLabelText("Description Item Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +91,7 @@ public class Perfect extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(selectIremName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectItemName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(descriptionName, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -117,7 +126,7 @@ public class Perfect extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectIremName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91)
@@ -152,6 +161,6 @@ public class Perfect extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel pwdatabase;
-    private components.ComboBox selectIremName;
+    private components.ComboBox selectItemName;
     // End of variables declaration//GEN-END:variables
 }
